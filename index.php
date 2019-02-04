@@ -1,9 +1,11 @@
 <?php
+
+require_once "Smarty.class.php";
 spl_autoload_register(function($clase) {
     include "$clase.php";
 });
 
-require_once "Smarty.class.php";
+
 
 //Creamos un objeto para gestionar plantillas
 $smarty = new Smarty();
@@ -16,16 +18,18 @@ if (isset($_POST['enviar'])) {
     $nombre = $_POST['name'];
     $pass = $_POST['pass'];
     $conexion = new BD();
-    $campos = $conexion->comprueboUsuario($nombre, $pass);
-    $smarty->assign('error', var_dump($campos));
-//    if () {
-//       $smarty->display("sitio.tpl");
-//    } else {
-//        $error = "Datos icorrectos";
-//        $smarty->assign('error', $error);
-    $smarty->display('login.tpl');
-//    }
+    if ($conexion->comprueboUsuario($nombre, $pass)) {
+        $_SESSION['user'] = $nombre;
+        $_SESSION['pass'] = $pass;
+        $smarty->display('sitio.tpl');
+    } else {
+        $error = "Datos icorrectos";
+        $smarty->assign('error', $error);
+        $smarty->display('login.tpl');
+    }
 } else {
+    $error = "";
+    $smarty->assign('error', $error);
     //Mostramos plantilla
     $smarty->display('login.tpl');
 }

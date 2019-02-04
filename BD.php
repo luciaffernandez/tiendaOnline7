@@ -8,13 +8,13 @@ class BD {
     private $pass;
     private $dns;
 
-    /** FUNCION QUE RECOGE LOS ATRIBUTOS NECESARIOS PARA CREAR LA CONEXION A LA BASE DE DATOS
-     * @param type $host
-     * @param type $user
-     * @param type $pass
-     * @param type $bd
+    /** Función que recoge los valores necerasios para la creación de un objeto de tipo base de datos
+     *  @param type $host
+     *  @param type $user
+     *  @param type $pass
+     *  @param type $bd
      */
-    public function __construct($host = "172.17.0.2", $user = "root", $pass = "root", $bd = "tienda") {
+    public function __construct($host = "localhost", $user = "root", $pass = "root", $bd = null) {
         $this->user = $user;
         $this->pass = $pass;
         if ($bd === null) {
@@ -25,8 +25,8 @@ class BD {
         $this->conexion = $this->conectar();
     }
 
-    /**
-     * @return \mysqli devuelve la conexion que es de tipo mysqli
+    /** Función que te conecta los objetos BD que se van creando
+     *  @return \mysqli devuelve la conexion que es de tipo mysqli
      */
     private function conectar() {
         try {
@@ -45,7 +45,7 @@ class BD {
         return $this->conexion->query($consulta);
     }
 
-    /**
+    /** Función que te devuelve las informacines de los errores que se puedan dar
      * @return string que sera el codigo de info que se generara si no se puede conectar a la base de datos
      */
     function getInfo() {
@@ -92,7 +92,10 @@ class BD {
         return $campos;
     }
 
-    public function ejecutar($sentencia) {
+    /** Ejecuta una sentencia que va a modificar la base de datos, es decir, un sentencia update, delete, insert...
+     * @param type $sentencia de tipo string que estará escrita en lenguaje sql
+     */
+    public function ejecutar(string $sentencia) {
         $this->info = NULL;
         if ($this->conexion == NULL) {
             $this->__construct($conexion);
@@ -101,49 +104,18 @@ class BD {
             $stmt = $this->conexion->prepare($sentencia);
             $stmt->execute();
         } catch (Exception $ex) {
-            $this->msj = "Error " . $ex->getMessage() . "<br/><hr /> Sentencia erronea.";
+            $this->info = "Error " . $ex->getMessage() . "<br/><hr /> Sentencia erronea.";
         }
     }
 
-    /** Realiza la función de borrar del gestor de tabla
-     * @param type $tabla
-     * @param type $datos
-     * @return array
-     */
-    public function delete($tabla, $datos): array {
+    public function comprueboUsuario(string $nombre, string $pass): bool {
         if ($this->conexion == null) {
             $this->conexion = $this->conectar();
         }
-        $sentencia = "DELETE FROM $tabla WHERE ";
-        foreach ($datos as $campo => $dato) {
-            $columna = substr($campo, 1);
-            $sentencia .= "$columna=$campo AND ";
-        }
-
-        $sql = substr($sentencia, 0, strlen($sentencia) - 4);
-        return $this->prepareStmt($sql, $datos);
-    }
-
-    /*     * Realiza la sentencia preparada que le pases
-     * @param string $sql
-     * @param array $datos
-     * @return bool
-     */
-
-    private function prepareStmt(string $sql, array $datos): bool {
-        $stmt = $this->conexion->prepare($sql);
-        $resultado = $stmt->execute($datos);
-        return $resultado;
-    }
-    
-    public function comprueboUsuario(string $nombre, string $pass){
-        if($this->conexion == null){
-            $this->conexion = $this->conectar();
-        }
-        $sentencia = "SELECT * FROM USUARIO;";
+        $sentencia = "SELECT * FROM USUARIO WHERE name='" . $nombre . "'and pass='" . $pass . "';";
         $campos = $this->seleccion($sentencia);
-        return $campos;
-        //foreach($campos){
+        $prueba = ($campos->fetchColumn() > 0) ? true : false;
+        return $prueba;
     }
 
 }
