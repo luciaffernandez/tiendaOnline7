@@ -14,7 +14,7 @@ class BD {
      *  @param type $pass
      *  @param type $bd
      */
-    public function __construct($host = "localhost", $user = "root", $pass = "root", $bd = null) {
+    public function __construct($host = "localhost", $user = "root", $pass = "root", $bd = "dwes") {
         $this->user = $user;
         $this->pass = $pass;
         if ($bd === null) {
@@ -112,9 +112,9 @@ class BD {
         if ($this->conexion == null) {
             $this->conexion = $this->conectar();
         }
-        $sentencia = "SELECT * FROM USUARIO WHERE name='" . $nombre . "'and pass='" . $pass . "';";
+        $sentencia = "SELECT * FROM usuarios WHERE name='" . $nombre . "' and pass='" . $pass . "'";
         $campos = $this->seleccion($sentencia);
-        $prueba = ($campos->fetchColumn() > 0) ? true : false;
+        $prueba = (is_null($campos) || empty($campos)) ? false : true;
         return $prueba;
     }
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-02-04 19:36:28
+/* Smarty version 3.1.33, created on 2019-02-06 19:32:00
   from 'C:\xampp\htdocs\tiendaOnline\template\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5c58862cbe15d4_18691493',
+  'unifunc' => 'content_5c5b2820c81078_88986981',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd5c8073e61983189d6fe583278d47d8fa63197c2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tiendaOnline\\template\\login.tpl',
-      1 => 1549304918,
+      1 => 1549477899,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5c58862cbe15d4_18691493 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5c5b2820c81078_88986981 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +31,7 @@ function content_5c58862cbe15d4_18691493 (Smarty_Internal_Template $_smarty_tpl)
 
 <body>
     <div id='login'>
-    <form action='index.php' method='post'>
+    <form action='login.php' method='post'>
     <fieldset >
         <legend>Login</legend>
         <div><span class='error'><?php echo $_smarty_tpl->tpl_vars['error']->value;?>

@@ -5,8 +5,6 @@ spl_autoload_register(function($clase) {
     include "$clase.php";
 });
 
-
-
 //Creamos un objeto para gestionar plantillas
 $smarty = new Smarty();
 
@@ -15,20 +13,28 @@ $smarty->template_dir = "./template";
 $smarty->compile_dir = "./template_c";
 
 if (isset($_POST['enviar'])) {
+    session_start();
     $nombre = $_POST['name'];
     $pass = $_POST['pass'];
     $conexion = new BD();
     if ($conexion->comprueboUsuario($nombre, $pass)) {
         $_SESSION['user'] = $nombre;
         $_SESSION['pass'] = $pass;
-        $smarty->display('sitio.tpl');
+
+        exit();
     } else {
         $error = "Datos icorrectos";
         $smarty->assign('error', $error);
         $smarty->display('login.tpl');
     }
 } else {
-    $error = "";
+
+    if (isset($_GET['error'])) {
+        $error = $_GET['error'];
+    } else {
+        $error = "";
+    }
+
     $smarty->assign('error', $error);
     //Mostramos plantilla
     $smarty->display('login.tpl');
