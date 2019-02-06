@@ -20,7 +20,7 @@ if (isset($_POST['enviar'])) {
     if ($conexion->comprueboUsuario($nombre, $pass)) {
         $_SESSION['user'] = $nombre;
         $_SESSION['pass'] = $pass;
-
+        header("Location:sitio.php");
         exit();
     } else {
         $error = "Datos icorrectos";

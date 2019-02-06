@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Práctica de tienda página de productos </title>
-        <meta charset="UTF-8">
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Listado de Productos con Plantillas</title>
+        <link href="tienda.css" rel="stylesheet" type="text/css">
     </head>
-    <body>
-       <h1>Bienvenido a esta página dwes</h1>
-       <hr/>
-       <h3>En la siguiente versión se visualizará una lista de productos para hacer su compra</h3>
+    <body class="pagproductos">
+        <div id="contenedor">
+            <div id="encabezado">
+                <h1>Listado de productos</h1>
+            </div>
+            <div id="productos">
+                {$listado}
+            </div>
+        </div>
     </body>
 </html>

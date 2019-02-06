@@ -118,4 +118,18 @@ class BD {
         return $prueba;
     }
 
+    public function obtenerListado() {
+        $listado = "";
+        $datos = $this->seleccion("SELECT * FROM producto");
+        foreach ($datos as $dato) {
+            $n_corto = $dato['nombre_corto'];
+            $precio = $dato['PVP'];
+            $listado .= "<form action='sitio.php' method='post'>"
+                    . "<input type='submit' value'Añadir' name='datos'>"
+                    . $n_corto . $precio
+                    . "</form>";
+        }
+        return $listado;
+    }
+
 }
