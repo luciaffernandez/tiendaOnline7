@@ -13,6 +13,11 @@
             <div id="productos">
                 {$listado}
             </div>
+            <div id="desconectar">
+                <form action="login.php" method="POST">
+                    <input type="submit" value="Desconectar" name="desconectar"/>
+                </form>
+            </div>
         </div>
     </body>
 </html>

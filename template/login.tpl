@@ -9,7 +9,7 @@
 <body>
     <div id='login'>
     <form action='login.php' method='post'>
-    <fieldset >
+    <fieldset>
         <legend>Login</legend>
         <div><span class='error'>{$error}</span></div>
         <div class='campo'>

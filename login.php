@@ -28,9 +28,14 @@ if (isset($_POST['enviar'])) {
         $smarty->display('login.tpl');
     }
 } else {
-
+    var_dump($_SESSION);
     if (isset($_GET['error'])) {
-        $error = $_GET['error'];
+        $error = "No has iniciado sesion";
+    } else {
+        $error = "";
+    }
+    if (isset($_POST['desconectar'])) {
+        $error = "Te has desconectado";
     } else {
         $error = "";
     }

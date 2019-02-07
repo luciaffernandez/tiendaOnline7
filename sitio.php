@@ -17,12 +17,15 @@ if (isset($_SESSION['user']) && isset($_SESSION['pass'])) {
     $nombre = $_SESSION['user'];
     $pass = $_SESSION['pass'];
 } else {
-    $error = "No te has registrado";
-    header("Location:login.php?error=$error");
+    header("Location:login.php");
 }
-
 $listado = $conexion->obtenerListado();
 $smarty->assign('listado', $listado);
+
+if(isset($_POST['desconectar'])){
+    session_unset();
+    session_destroy();
+}
 
 $smarty->display("sitio.tpl");
 ?>

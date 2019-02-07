@@ -14,7 +14,7 @@ class BD {
      *  @param type $pass
      *  @param type $bd
      */
-    public function __construct($host = "localhost", $user = "root", $pass = "root", $bd = "dwes") {
+    public function __construct($host = "172.17.0.2", $user = "root", $pass = "root", $bd = "dwes") {
         $this->user = $user;
         $this->pass = $pass;
         if ($bd === null) {
@@ -125,7 +125,7 @@ class BD {
             $n_corto = $dato['nombre_corto'];
             $precio = $dato['PVP'];
             $listado .= "<form action='sitio.php' method='post'>"
-                    . "<input type='submit' value'Añadir' name='datos'>"
+                    . "<input type='submit' value='Añadir' name='datos'>"
                     . $n_corto . $precio
                     . "</form>";
         }
