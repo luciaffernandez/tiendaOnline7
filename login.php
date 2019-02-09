@@ -4,7 +4,7 @@ require_once "Smarty.class.php";
 spl_autoload_register(function($clase) {
     include "$clase.php";
 });
-
+session_start();
 //Creamos un objeto para gestionar plantillas
 $smarty = new Smarty();
 
@@ -13,7 +13,6 @@ $smarty->template_dir = "./template";
 $smarty->compile_dir = "./template_c";
 
 if (isset($_POST['enviar'])) {
-    session_start();
     $nombre = $_POST['name'];
     $pass = $_POST['pass'];
     $conexion = new BD();
@@ -31,16 +30,17 @@ if (isset($_POST['enviar'])) {
     var_dump($_SESSION);
     if (isset($_GET['error'])) {
         $error = "No has iniciado sesion";
+        $smarty->assign('error', $error);
     } else {
         $error = "";
     }
     if (isset($_POST['desconectar'])) {
+        session_destroy();
         $error = "Te has desconectado";
+        $smarty->assign('error', $error);
     } else {
         $error = "";
     }
-
-    $smarty->assign('error', $error);
     //Mostramos plantilla
     $smarty->display('login.tpl');
 }

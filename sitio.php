@@ -17,15 +17,18 @@ if (isset($_SESSION['user']) && isset($_SESSION['pass'])) {
     $nombre = $_SESSION['user'];
     $pass = $_SESSION['pass'];
 } else {
-    header("Location:login.php");
+    header("Location:login.php?error");
+}
+
+if ($_POST['accionCesta']) {
+    switch ($_POST['accionCesta']) {
+        case 'Añadir':
+            $_SESSIO['cesta'] = generaCesta();
+            break;
+    }
 }
 $listado = $conexion->obtenerListado();
 $smarty->assign('listado', $listado);
-
-if(isset($_POST['desconectar'])){
-    session_unset();
-    session_destroy();
-}
 
 $smarty->display("sitio.tpl");
 ?>

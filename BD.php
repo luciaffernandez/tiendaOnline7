@@ -124,8 +124,11 @@ class BD {
         foreach ($datos as $dato) {
             $n_corto = $dato['nombre_corto'];
             $precio = $dato['PVP'];
+            $codigo = $dato['cod'];
             $listado .= "<form action='sitio.php' method='post'>"
-                    . "<input type='submit' value='Añadir' name='datos'>"
+                    . "<input type='submit' value='Añadir' name='accionCesta'>"
+                    . "<input type='hidden' value='$precio' name='precio'>"
+                    . "<input type='hidden' value='$codigo' name='codigo'>"
                     . $n_corto . $precio
                     . "</form>";
         }
