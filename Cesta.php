@@ -57,7 +57,7 @@ class Cesta {
     }
     
     public function vacia(){
-        $this = null;
+        $this->productos = null;
         $this->guardaCesta();
     }
 }
