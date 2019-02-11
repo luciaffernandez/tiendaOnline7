@@ -14,7 +14,7 @@ class BD {
      *  @param type $pass
      *  @param type $bd
      */
-    public function __construct($host = "172.17.0.2", $user = "root", $pass = "root", $bd = "dwes") {
+    public function __construct($host = "localhost", $user = "root", $pass = "root", $bd = "dwes") {
         $this->user = $user;
         $this->pass = $pass;
         if ($bd === null) {
@@ -116,23 +116,6 @@ class BD {
         $campos = $this->seleccion($sentencia);
         $prueba = (is_null($campos) || empty($campos)) ? false : true;
         return $prueba;
-    }
-
-    public function obtenerListado() {
-        $listado = "";
-        $datos = $this->seleccion("SELECT * FROM producto");
-        foreach ($datos as $dato) {
-            $n_corto = $dato['nombre_corto'];
-            $precio = $dato['PVP'];
-            $codigo = $dato['cod'];
-            $listado .= "<form action='sitio.php' method='post'>"
-                    . "<input type='submit' value='Añadir' name='accionCesta'>"
-                    . "<input type='hidden' value='$precio' name='precio'>"
-                    . "<input type='hidden' value='$codigo' name='codigo'>"
-                    . $n_corto . $precio
-                    . "</form>";
-        }
-        return $listado;
     }
 
 }

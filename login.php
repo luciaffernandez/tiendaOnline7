@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 require_once "Smarty.class.php";
 spl_autoload_register(function($clase) {
     include "$clase.php";
@@ -22,24 +22,22 @@ if (isset($_POST['enviar'])) {
         header("Location:sitio.php");
         exit();
     } else {
-        $error = "Datos icorrectos";
+        $error = "Datos incorrectos";
         $smarty->assign('error', $error);
         $smarty->display('login.tpl');
     }
 } else {
-    var_dump($_SESSION);
+    $error = "";
+    $smarty->assign('error', $error);
+    
     if (isset($_GET['error'])) {
-        $error = "No has iniciado sesion";
-        $smarty->assign('error', $error);
-    } else {
-        $error = "";
+        $error = "No has iniciado sesión";
+        
     }
     if (isset($_POST['desconectar'])) {
         session_destroy();
         $error = "Te has desconectado";
         $smarty->assign('error', $error);
-    } else {
-        $error = "";
     }
     //Mostramos plantilla
     $smarty->display('login.tpl');

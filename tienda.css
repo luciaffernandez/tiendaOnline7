@@ -1,93 +1,86 @@
-.error {
-  font-family: Verdana, Arial, sans-serif; 
-  font-size: 0.7em;
-  color: #900;
-  background-color : #ffff00;
+/*ESTILOS GENERALES*/
+
+@font-face {
+  font-family: "Roboto regular";
+  src: url("tipos/RobotoCondensed-Regular.ttf");
+}
+@font-face {
+  font-family: "Roboto bold";
+  src: url("tipos/RobotoCondensed-Bold.ttf");
+}
+@font-face {
+  font-family: "Source regular";
+  src: url("tipos/SourceSansPro-Regular.ttf");
+}
+@font-face {
+  font-family: "Source bold";
+  src: url("tipos/SourceSansPro-Bold.ttf");
+}
+*{
+    font-family: "Source regular"; 
 }
 
-.divisor {
-  clear:both;
-  height:0;
-  font-size: 1px;
-  line-height: 0px;
+/*APARTIR DE AQUÍ ES EL LOGIN.TPL*/
+
+.error {
+  font-family: "Source bold"; 
+  font-size: 0.7em;
+  color: white;
+  background-color : red;
 }
 
 #login fieldset {
-  position: absolute;
-  left: 50%;
-  top: 50%;
+  margin: auto;
+  margin-top: 300px;
   width: 230px;
-  margin-left: -115px;
-  height: 160px;
-  margin-top: -80px;
-  padding:10px;
+  height: auto;
+  padding:3px 10px 5px 10px;
   border:1px solid #ccc;
   background-color: #eee;
 }
 
 #login legend {
-  font-family : Arial, sans-serif;
+  font-family : "Source bold";
   font-size: 1.3em;
-  font-weight:bold;
   color:#333;
 }
 
 #login .campo {
-  margin-top:8px;
+  margin-top:5px;
   margin-bottom: 10px;
 }
 
 #login label {
-  font-family : Arial, sans-serif;
+  font-family : "Source bold";
   font-size:0.8em;
-  font-weight: bold;
 }
 
-
-#login input[type="text"], #login input[type="password"] {
-  font-family : Arial, Verdana, sans-serif;
-  font-size: 0.8em;
-  line-height:140%;
-  color : #000; 
+#login input {
+  font-size: 0.8em; 
   padding : 3px; 
   border : 1px solid #999;
   height:18px;
   width:220px;
+  margin-top: 2px;
 }
 
 #login input[type="submit"] {
   width:100px;
   height:30px;
-  padding-left:0px;
 }
 
-.pagproductos body, .pagcesta body  {
-  font: 100% Verdana, Arial, Helvetica, sans-serif;
-  background: #666;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  color: #000000;
-}
+/*APARTIR DE AQUÍ ES EL SITIO.TPL*/
 
 #contenedor { 
   width: 90%;
-  background: #fff;
-  margin: 0 auto;
-  border: 1px solid #000;
+  margin: auto;
+  border: 1px solid black;
   text-align: left;
 } 
 
 #encabezado {
   padding: 0 10px;
-  border-top-width: thin;
-  border-right-width: thin;
-  border-bottom-width: thin;
-  border-left-width: thin;
-  border-top-style: solid;
-  border-right-style: solid;
-  border-bottom-style: solid;
-  border-left-style: solid;
+  border-bottom: solid black 1px;
   background-color: #9cf;
 } 
 
@@ -95,42 +88,51 @@
   margin: 0; 
   padding: 10px 0; 
 }
-.pagproductos #cesta {
+
+.pagproductos #contenedor #cesta {
   float: right;
-  width: 12em;
-  background-color: #588;
+  width: 16em;
+  border:1px solid #ccc;
+  background-color: #eee;
+  color: black;
 }
-.pagproductos #cesta h3 {
-  margin-left: 10px;
+
+.pagproductos #contenedor #cesta #botonesCesta{
+    margin-left: 25px;
+}
+
+.pagproductos #contenedor #cesta h3 img {
   margin-right: 10px;
+  margin-left: 10px;
 }
-.pagproductos #cesta p {
+
+.pagproductos #contenedor #cesta p {
   margin-left: 10px;
   margin-right: 10px;
   font-size: 10px;
 }
 
-.pagproductos #cesta input[type="submit"] {
+.pagproductos #contenedor #cesta input[type="submit"] {
   margin-left: 10px;
   margin-right: 10px;
-  margin-bottom: 3px;
-  width:100px;
-  height:30px;
+  margin-bottom: 10px;
+  width:35%;
+  height: 30px;
   padding-left:0px;
 }
 
-.pagproductos #productos {
-  margin: 0 10em 0 10px;
-} 
-
-.pagcesta #productos {
+.pagproductos #contenedor .pagcesta #productos {
   margin: 10px;
   font-size: 12px;
 } 
 
-.pagproductos #productos input, .pagproductos #productos p {
-  font-size: 10px;
+.pagproductos #contenedor #productos input, .pagproductos #contenedor #productos{
+  font-size: 14px;
+  margin: 6px;
 } 
+#botonesCesta{
+    margin: auto;
+}
 
 #productos .codigo {
   width: 20%;
