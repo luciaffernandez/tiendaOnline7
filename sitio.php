@@ -43,6 +43,7 @@ if ($_POST['accionCesta']) {
             break;
         case 'Pagar':
             
+            
             break;
     }
 }

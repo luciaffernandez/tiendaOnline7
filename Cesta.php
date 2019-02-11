@@ -23,11 +23,15 @@ class Cesta {
         if($this->productos == null || $this->productos == 0){
            return "La cesta está vacía";
         }
-        $listado = "";
+        $contenidoCesta = "";
         foreach ($this->productos as $codigo => $valores) {
-            $listado .= "$valores[0] - $codigo - $valores[1]";
+            $contenidoCesta .= "<p>"
+                    . "<span class='cantidad'>$valores[0]</span> "
+                    . "<span class='codigo'>$codigo</span> "
+                    . "<span class='precio'>$valores[1]</span><br/>"
+                    . "</p>";
         }
-        return $listado;
+        return $contenidoCesta;
     }
     
     public function nuevoProd($precio, $codigo) {
@@ -53,7 +57,7 @@ class Cesta {
     }
     
     public function vacia(){
-        //$this = null;
+        $this = null;
         $this->guardaCesta();
     }
 }

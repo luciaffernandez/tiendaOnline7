@@ -112,7 +112,28 @@
   font-size: 10px;
 }
 
-.pagproductos #contenedor #cesta input[type="submit"] {
+p .cantidad {
+  width: 20%;
+  float:left;
+}
+p .codigo {
+  width: 60%;
+  float:left;
+}
+p .precio {
+  width: 20%;
+  text-align: right; 
+}
+p .total1 {
+  width: 80%;
+  float: left; 
+}
+p .total2 {
+  width: 20%;
+  text-align: right; 
+}
+
+#cesta input[type="submit"] {
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 10px;

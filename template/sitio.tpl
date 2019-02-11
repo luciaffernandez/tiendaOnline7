@@ -7,12 +7,15 @@
     </head>
     <body class="pagproductos">
         <div id="contenedor">
+            <div id="encabezado">
+                <h1>Listado de productos</h1>
+            </div>
             <div id="cesta">
                     <h3><img src="img/cesta.png" alt="Cesta" width="26" height="24">Cesta</h3>
                     <hr>
-                    <p>{$contenidoCesta}</p>
+                    {$contenidoCesta}
                     <hr>
-                    <p>{$total}</p>
+                    <p><span class="total1">Total:</span><span class="total2">{$total}</span></p>
                     <hr>
                     <div id="botonesCesta">
                         <form action="productos.php" method="post">
@@ -20,9 +23,6 @@
                             <input class="cestaAccion" type="submit" name="cestaAccion" value="Vaciar">
                         </form>
                     </div>
-            </div>
-            <div id="encabezado">
-                <h1>Listado de productos</h1>
             </div>
             <div id="productos">
                 {$listado}
