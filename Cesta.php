@@ -3,6 +3,7 @@
 class Cesta {
 
     private $productos = [];
+    private $total;
 
     public function __construct() {
         foreach ($this->productos as $producto) {
@@ -11,6 +12,26 @@ class Cesta {
                 $valores = [];
             }
         }
+    }
+
+    public function contarProductos() {
+        foreach ($this->productos as $producto => $valores) {
+            $suma += $valores[0];
+        }
+        return $suma;
+    }
+
+    public function calculoIVA() {
+        $IVA = $this->total * 0.21;
+        return $IVA;
+    }
+
+    public function getProductos() {
+        return $this->productos;
+    }
+
+    public function getTotal() {
+        return $this->total;
     }
 
     public static function generaCesta() {
@@ -60,13 +81,13 @@ class Cesta {
     }
 
     public function calculoTotal() {
-        $total = 0;
+        $this->total = 0;
         foreach ($this->productos as $producto => $valores) {
             $cantidad = $valores[0];
             $precio = $valores[1];
-            $total += ($cantidad * $precio);
+            $this->total += ($cantidad * $precio);
         }
-        return $total;
+        return $this->total;
     }
 
     public function guardaCesta() {
