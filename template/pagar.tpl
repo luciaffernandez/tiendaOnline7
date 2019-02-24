@@ -21,48 +21,51 @@
                 <input name="return" type="hidden" value="http://tienda/ejemploPaypal/index.php" />
                 <input name="notify_url" type="hidden" value="http://tienda/ejemploPaypal/index.php" />
                 <input name="rm" type="hidden" value="2" />
-                <div class = "pago">
-                    <table id = "tablaPagar" class = "pago">
+                <div class="pago">
+                    <table id="tablaPagar" class="pago">
                         <thead>
-                            <tr class = "pago">
-                                <th class = "pago">Articulo</th>
-                                <th class = "pago">Cantidad</th>
-                                <th class = "pago">Precio Unitario</th>
+                            <tr class="pago">
+                                <th class="pago">Articulo</th>
+                                <th class="pago">Cantidad</th>
+                                <th class="pago">Precio Unitario</th>
                             </tr>
                         </thead>
                         {$resumenPago}
                     </table>
-
                     <hr />    
-
                     <table>
                         <thead>
-                            <tr class = "pago">
-                            <th class = "pago" colspan = 2><strong>RESUMEN DE LA FACTURA</strong></th>
+                            <tr class="pago">
+                                <th class = "pago" colspan = 2><strong>RESUMEN DE LA FACTURA</strong></th>
                         </thead>
-                        <tr class = "pago">
-                            <td class = "pago">Total articulos</td>
-                            <td class = "pago">{$cantidadProductos}</td>
+                        <tr class="pago">
+                            <td class="pago">Total articulos</td>
+                            <td class="pago">{$cantidadProductos}</td>
                         </tr>
                         <tr>
-                            <td class = "pago">Precio total Sin iva</td>
-                            <td class = "pago">{$total}</td>
+                            <td class="pago">Precio total Sin iva</td>
+                            <td class="pago">{$total}</td>
                         </tr>
                         <tr>
-                            <td class = "pago">IVA</td>
-                            <td class = "pago">{$IVA}</td></td>
+                            <td class="pago">IVA</td>
+                            <td class="pago">{$IVA}</td></td>
                         </tr>
                         <tr>
-                            <td class = "pago">TOTAL pagar</td>
-                            <td class = "pago">{$totalIVA}</td>
+                            <td class="pago">TOTAL pagar</td>
+                            <td class="pago">{$totalIVA}</td>
                         </tr>
                     </table>
                 </div>
                 <input type="image" src="http://www.paypal.com/es_ES/i/btn/x-click-but01.gif" border="0" name="submit" alt="Realice pagos con PayPal: es rápido, gratis y seguro">
             </form>
+            <form action="xpdf.php" method="post">
+                <input type="submit" name="imprimir" value="Imprimir"/>
+            </form>
             <div id="pie">
-                <form action='login.php' method='post'>
-                    <input type='submit' name='desconectar' value='Desconectar usuario {$usuario}'/>
+                <form action="login.php" method="post">
+                    <input type="submit" name="desconectar" value="Desconectar usuario {$usuario}"/>
+                </form>
+                <form action='sitio.php' method='post'>
                     <input type='submit' name='volver' value='Volver'/>
                 </form>
             </div>

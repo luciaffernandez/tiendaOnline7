@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-02-23 21:12:27
+/* Smarty version 3.1.33, created on 2019-02-23 23:30:27
   from 'C:\xampp\htdocs\tiendaOnline\template\pagar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5c71a92b1ddd49_17449084',
+  'unifunc' => 'content_5c71c983c03a25_61064075',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd8c924068ae8263ae237a173ad0926cb7b93c0a3' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tiendaOnline\\template\\pagar.tpl',
-      1 => 1550952738,
+      1 => 1550960835,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5c71a92b1ddd49_17449084 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5c71c983c03a25_61064075 (Smarty_Internal_Template $_smarty_tpl) {
 ?><html>
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -58,13 +58,11 @@ function content_5c71a92b1ddd49_17449084 (Smarty_Internal_Template $_smarty_tpl)
                         <?php echo $_smarty_tpl->tpl_vars['resumenPago']->value;?>
 
                     </table>
-
                     <hr />    
-
                     <table>
                         <thead>
                             <tr class = "pago">
-                            <th class = "pago" colspan = 2><strong>RESUMEN DE LA FACTURA</strong></th>
+                                <th class = "pago" colspan = 2><strong>RESUMEN DE LA FACTURA</strong></th>
                         </thead>
                         <tr class = "pago">
                             <td class = "pago">Total articulos</td>
@@ -89,6 +87,9 @@ function content_5c71a92b1ddd49_17449084 (Smarty_Internal_Template $_smarty_tpl)
                     </table>
                 </div>
                 <input type="image" src="http://www.paypal.com/es_ES/i/btn/x-click-but01.gif" border="0" name="submit" alt="Realice pagos con PayPal: es rápido, gratis y seguro">
+            </form>
+            <form action="xpdf.php" method="POST">
+                <input type='submit' name='imprimir' value='Imprimir'/>
             </form>
             <div id="pie">
                 <form action='login.php' method='post'>

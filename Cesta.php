@@ -5,15 +5,7 @@ class Cesta {
     private $productos = [];
     private $total;
 
-    public function __construct() {
-        foreach ($this->productos as $producto) {
-            $producto = [];
-            foreach ($producto as $valores) {
-                $valores = [];
-            }
-        }
-    }
-
+    //Suma las cantidades de los productos y devuelve el número de productos que contiene la cesta
     public function contarProductos() {
         foreach ($this->productos as $producto => $valores) {
             $suma += $valores[0];
@@ -21,11 +13,13 @@ class Cesta {
         return $suma;
     }
 
+    //calcula a partir del atributo total el IVA proporcional
     public function calculoIVA() {
         $IVA = $this->total * 0.21;
         return $IVA;
     }
 
+    //getters de los atributos de la clase
     public function getProductos() {
         return $this->productos;
     }
@@ -34,6 +28,9 @@ class Cesta {
         return $this->total;
     }
 
+    /** Devuelve la cesta con distinto formato según si ya existe o no
+     * @return Cesta como objeto o como variable de sesión
+     */
     public static function generaCesta() {
         if (isset($_SESSION['cesta'])) {
             return $_SESSION['cesta'];
@@ -42,6 +39,10 @@ class Cesta {
         }
     }
 
+    /** Funcion que construye el contenido de la cesta con HTML 
+     * según el contenido del atributo productos
+     * @return string con el HTML
+     */
     public function mostrarCesta() {
         if ($this->productos == null || $this->productos == 0) {
             $contenidoCesta .= "<p class='cestaVacia'>0 PRODUCTOS</p>";
@@ -63,6 +64,11 @@ class Cesta {
         return $contenidoCesta;
     }
 
+    /** Funcion que comprueba si el producto ya existe en el array productos, 
+     * si no existe lo añade con sus datos y si sí solo le suma uno a su cantidad
+     * @param type $precio
+     * @param type $codigo
+     */
     public function nuevoProd($precio, $codigo) {
         if ($this->productos[$codigo][0] > 0) {
             $this->productos[$codigo][0] ++;
@@ -72,6 +78,10 @@ class Cesta {
         }
     }
 
+    /** Función que comprueba la cantidad de un producto que hay en el array productos 
+     * de la cesta y si es mayor que 1 le resta 1, si no el valor mínimo es 1 asique lo elimina
+     * @param type $codigo
+     */
     public function eliminoProd($codigo) {
         if ($this->productos[$codigo][0] > 1) {
             $this->productos[$codigo][0] --;
@@ -80,8 +90,10 @@ class Cesta {
         }
     }
 
+    /** calcula el precio total a pagar cogiendo los datos del array productos
+     * @return type
+     */
     public function calculoTotal() {
-        $this->total = 0;
         foreach ($this->productos as $producto => $valores) {
             $cantidad = $valores[0];
             $precio = $valores[1];
@@ -90,10 +102,12 @@ class Cesta {
         return $this->total;
     }
 
+    //guardamos cesta en una variable de sesion
     public function guardaCesta() {
         $_SESSION['cesta'] = $this;
     }
 
+    //vaciamos cesta
     public function vacia() {
         unset($this->productos);
     }

@@ -57,11 +57,10 @@ class BD {
         $this->conexion = null;
     }
 
-    /*
-     * @param string $consulta que tendrá una sentencia mysql
+    /** Funcion que devuelve un array con el resultado de una sentencia sql
+     * @param string $consulta que tendrá una sentencia sql
      * @return type array que recogera todas las filas que hemos seleccionado de la base de datos
      */
-
     public function seleccion(string $consulta): array {
         $campos = [];
         if ($this->conexion == null) {
@@ -74,7 +73,7 @@ class BD {
         return $campos;
     }
 
-    /**
+    /** Funcion que devuelve un array con el nombre las columnas de una tabla
      * @param string $nomTabla es el nombre de la tabla cuyos nombres de los campos que quiero
      * @return array con los nombres de las columnas de la tabla
      */
@@ -108,6 +107,11 @@ class BD {
         }
     }
 
+    /** Funcion que comprueba que estos datos esten en la base de datos y sean correctos
+     * @param string $nombre
+     * @param string $pass
+     * @return bool. Si esta ese usuario sera true si no false
+     */
     public function comprueboUsuario(string $nombre, string $pass): bool {
         if ($this->conexion == null) {
             $this->conexion = $this->conectar();
