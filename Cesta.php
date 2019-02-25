@@ -46,21 +46,22 @@ class Cesta {
     public function mostrarCesta() {
         if ($this->productos == null || $this->productos == 0) {
             $contenidoCesta .= "<p class='cestaVacia'>0 PRODUCTOS</p>";
+        } else {
+            $contenidoCesta = "";
+            foreach ($this->productos as $codigo => $valores) {
+                $contenidoCesta .= "<p>"
+                        . "<span class='cantidad'>$valores[0]</span> "
+                        . "<span class='codigo'>$codigo</span> "
+                        . "<span class='precio'>$valores[1]</span>"
+                        . "<form action='sitio.php' method='POST'>"
+                        . "<input type='hidden' name='codigo' value='$codigo'>"
+                        . "<input type='submit' name='cestaAccion' value='Eliminar'><br/>"
+                        . "</form>"
+                        . "</p>";
+            }
+            $contenidoCesta .= "<hr>"
+                    . "<p><span class='total1'>Total:</span><span class='total2'>" . $this->calculoTotal() . "</span><br/></p>";
         }
-        $contenidoCesta = "";
-        foreach ($this->productos as $codigo => $valores) {
-            $contenidoCesta .= "<p>"
-                    . "<span class='cantidad'>$valores[0]</span> "
-                    . "<span class='codigo'>$codigo</span> "
-                    . "<span class='precio'>$valores[1]</span>"
-                    . "<form action='sitio.php' method='POST'>"
-                    . "<input type='hidden' name='codigo' value='$codigo'>"
-                    . "<input type='submit' name='cestaAccion' value='Eliminar'><br/>"
-                    . "</form>"
-                    . "</p>";
-        }
-        $contenidoCesta .= "<hr>"
-                . "<p><span class='total1'>Total:</span><span class='total2'>" . $this->calculoTotal() . "</span><br/></p>";
         return $contenidoCesta;
     }
 
@@ -110,6 +111,7 @@ class Cesta {
     //vaciamos cesta
     public function vacia() {
         unset($this->productos);
+        unset($this->total);
     }
 
 }

@@ -8,13 +8,13 @@ class BD {
     private $pass;
     private $dns;
 
-    /** Función que recoge los valores necerasios para la creación de un objeto de tipo base de datos
+    /** Función que recoge los valores necesarios para la creación de un objeto de tipo base de datos
      *  @param type $host
      *  @param type $user
      *  @param type $pass
      *  @param type $bd
      */
-    public function __construct($host = "localhost", $user = "root", $pass = "root", $bd = "dwes") {
+    public function __construct($host = "172.17.0.2", $user = "root", $pass = "root", $bd = "dwes") {
         $this->user = $user;
         $this->pass = $pass;
         if ($bd === null) {
